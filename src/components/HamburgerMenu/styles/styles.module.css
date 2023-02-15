@@ -102,6 +102,10 @@
 
         gap: 1rem;
 
+        margin: 0rem;
+
+        padding: 0rem;
+
         background: #FFFFFF;
         padding: 1rem 1rem 0rem 1.5rem;
         border-radius: 0px;
@@ -114,6 +118,15 @@
         z-index: 5;
         
         transition: all 0.3s;
+    }
+
+    .openMenu {
+        margin: 0rem;
+    }
+
+    .closedMenu div {
+        padding-bottom: 0rem;
+        margin: 0rem;
     }
 
     .closedMenu div h3 {
@@ -135,12 +148,21 @@
     }
 
     .closedMenu div ul {
-        position: absolute;
+        position: relative;
 
-    }
+        display: none;
 
-    .closedMenu div ul:hover {
+        margin: 0rem;
+
         background: #FFFFFF;
+
+        left: -15px;
+
+        border-radius: 8px;
+
+        padding: 1rem;
+
+        transition: all 0.3s;
     }
 
     .closedMenu div ul li a { 

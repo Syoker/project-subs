@@ -8,9 +8,19 @@ import background from './styles/background.module.css'
 
 export default function HamburgerMenu() {
   let [isMenuOpen, setIsMenuOpen] = useState(false);
+  let [isAnimeOptionOpen, setIsAnimeOptionOpen] = useState(false);
+  let [isMangaOptionOpen, setIsMangaOptionOpen] = useState(false);
 
   function onClick() {
     setIsMenuOpen(!isMenuOpen);
+  }
+
+  function onClickAnime() {
+    setIsAnimeOptionOpen(!isAnimeOptionOpen);
+  }
+
+  function onClickManga() {
+    setIsMangaOptionOpen(!isMangaOptionOpen);
   }
 
   return <>
@@ -19,16 +29,16 @@ export default function HamburgerMenu() {
     <div className={classNames(background.closedMenu, isMenuOpen ? background.openMenu : null)} onClick={onClick} />
     <nav className={classNames(styles.closedMenu, isMenuOpen ? styles.openMenu : null)}>
       <div>
-        <h3>Anime</h3>
-        <ul>
+        <h3 onClick={onClickAnime}>Anime</h3>
+        <ul className={isAnimeOptionOpen ? styles.active : ''}>
           <li><a href="#">Proyectos activos</a></li>
           <li><a href="#">Proyectos finalizados</a></li>
           <li><a href="#">Proyectos abandonados</a></li>
         </ul>
       </div>
       <div>
-        <h3>Mangas</h3>
-        <ul>
+        <h3 onClick={onClickManga}>Mangas</h3>
+        <ul className={isMangaOptionOpen ? styles.active : ''}>
           <li><a href="#">Proyectos activos</a></li>
           <li><a href="#">Proyectos finalizados</a></li>
           <li><a href="#">Proyectos abandonados</a></li>
