@@ -1,17 +1,18 @@
 .closedMenu {
     position: fixed;
-    top: 4rem;
+    top: 0rem;
     right: 0rem;
     width: 100%;
     height: 100%;
     background: #000000;
-    opacity: 0.25;
+    opacity: 0;
 
-    z-index: 3;
+    z-index: 1;
 
-    display: none;
+    transition: all 0.3s;
 }
 
 .openMenu {
-    display: block;
+    z-index: 5;
+    opacity: 0.25;
 }

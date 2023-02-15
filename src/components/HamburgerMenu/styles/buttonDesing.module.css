@@ -43,11 +43,15 @@
 .openMenu:before {
     top: 0rem;
     transform: rotate(45deg);
+    
+    z-index: 6;
 }
 
 .openMenu:after {
     top: 0rem;
     transform: rotate(-45deg);
+
+    z-index: 6;
 }
 
 @media (prefers-color-scheme: dark) {

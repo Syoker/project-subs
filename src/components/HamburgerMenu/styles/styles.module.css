@@ -2,13 +2,15 @@
     position: fixed;
     background: #FFFFFF;
     padding: 1rem 1rem 0rem 1rem;
-    width: 15rem;
-    height: 100%;
+    border-radius: 8px;
+    width: 60%;
+    height: 60%;
     top: 4rem;
-    left: -15rem; 
+    left: 5%;
+    opacity: 0;
 
-    z-index: 3;
-
+    z-index: 1;
+    
     transition: all 0.3s;
 }
 
@@ -20,6 +22,10 @@
     padding: 0.2rem 0.5rem;
     background-color: #C42A00;
     border-radius: 8px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
     font-family: ColateraSoft;
     font-weight: 400;
@@ -44,6 +50,10 @@
     text-decoration: underline;
     text-decoration-color: transparent;
 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
     color: #000000;
 
     transition: all 0.3s;
@@ -55,7 +65,13 @@
 }
 
 .openMenu {
-    left: 0rem; 
+    width: 90%;
+    height: 90%;
+    opacity: 1;
+
+    z-index: 5;
+
+    transition: all 0.3s;
 }
 
 @media (prefers-color-scheme: dark) {
