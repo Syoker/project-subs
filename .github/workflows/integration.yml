@@ -1,5 +1,5 @@
 name: Build Next.js web application
-on: dynamic
+on: push
 jobs:
   build-project:
     name: Build project
