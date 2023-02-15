@@ -17,7 +17,7 @@ export default function Head({ title, description, ogUrl, ogTitle, ogDescription
 
     <title>{title}</title>
     <meta name='description' content={description} />
-    <link rel='icon' href='/favicon.ico' />
+    <link rel='icon' href='./favicon.ico' />
 
     {/* for social media */}
     <meta name="twitter:card" content="summary_large_image" />
