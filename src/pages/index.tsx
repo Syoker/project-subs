@@ -10,7 +10,7 @@ import main from '@/styles/main.module.css';
 export default function HomePage() {
   return <>
     <Head
-      title='SyokerTranslations'
+      title='SyokerSubs'
       description=''
       ogUrl='https://syoker.github.io/es/translations/'
       ogTitle=''
