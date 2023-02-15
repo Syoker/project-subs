@@ -44,6 +44,7 @@
     top: 0rem;
     transform: rotate(45deg);
     
+    background-color: #FFFFFF;
     z-index: 6;
 }
 
@@ -51,6 +52,7 @@
     top: 0rem;
     transform: rotate(-45deg);
 
+    background-color: #FFFFFF;
     z-index: 6;
 }
 
