@@ -14,5 +14,15 @@
 
 .openMenu {
     z-index: 5;
-    opacity: 0.25;
+    opacity: 0.5;
+}
+
+@media (min-width: 80rem) {
+    .closedMenu {
+        display: none;
+    }
+
+    .openMenu {
+        display: none;
+    }
 }

@@ -5,9 +5,15 @@
     padding: 1.5rem;
     opacity: 0;
 
-    z-index: 2;
+    z-index: 7;
 
     cursor: pointer;
 
     -webkit-tap-highlight-color: transparent;
+}
+
+@media (min-width: 80rem) {
+    .container {
+        display: none;
+    }
 }
