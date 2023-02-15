@@ -103,7 +103,7 @@ export function Card({ serieTitle, chapterTitle, chapterDate, coverSource, cover
     <article>
       <Image
         className={styles.cover}
-        src={coverSource ? `/img/${coverSource}` : '/img/no-image-available.png'}
+        src={coverSource ? `./img/${coverSource}` : './img/no-image-available.png'}
         alt={coverAlternative ? coverAlternative : serieTitle}
         width={80}
         height={80}
@@ -111,7 +111,7 @@ export function Card({ serieTitle, chapterTitle, chapterDate, coverSource, cover
         placeholder='blur'
       />
       <div>
-        <Cover coverPath={coverSource ? `/img/${coverSource}` : '/img/no-image-available.png'} className={styles.entryBackgroundCover} />
+        <Cover coverPath={coverSource ? `./img/${coverSource}` : './img/no-image-available.png'} className={styles.entryBackgroundCover} />
         <div className={styles.entryBackgroundCoverTapestry} />
         <h4>{serieTitle}</h4>
         <h5>{chapterTitle ? chapterTitle : 'No title'}</h5>
