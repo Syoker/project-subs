@@ -1,51 +1,46 @@
 import Image from 'next/image'
 import classNames from 'classnames';
 import styled from 'styled-components'
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-import arrow from './styles/arrow.module.css';
 import styles from './styles/styles.module.css';
 
 interface CarouselProps {
   seriesTitle: string[];
   format: string[];
-  coversPath: string[];
+  coversSource: string[];
   coversAlternative: string[];
   allGenres: string[][];
+  seriesPath: string[];
 }
 
 interface CardProps {
-  seriesTitle: string;
-  format?: string;
-  coverPath?: string;
-  coverAlternative?: string;
+  serieTitle: string;
+  format: string;
+  coverSource: string;
+  coverAlternative: string;
   allGenres: string[][];
-  index: number;
+  path: string;
+  i: number;
 }
 
-interface CardBackgroundCoverProps {
-  coverPath: string;
-}
+const CardBackgroundCover = styled.div<{ coverPath: string }>`
+  background-image: url(${props => props.coverPath});
+`;
 
-interface CardContainerMoveProps {
-  position: number;
-}
-
-interface PointersRowsProps {
-  display: string;
-}
-
-const CardContainerMove = styled.div<CardContainerMoveProps>`
+const CardContainerMove = styled.div<{ position: number }>`
   transform: translateX(${props => props.position}%);
-`
+`;
 
-const PointersRows = styled.div<PointersRowsProps>`
+const PointersRows = styled.div<{ display: string }>`
   display: ${props => props.display};
-`
+`;
 
-export default function Carousel({ seriesTitle, format, coversPath, coversAlternative, allGenres }: CarouselProps) {
+export default function Carousel({ seriesTitle, format, coversSource, coversAlternative, seriesPath, allGenres }: CarouselProps) {
   let [position, setPosition] = useState(0);
   let [newPosition, setNewPosition] = useState(0);
+
+  const cardsHTML = [];
 
   function onClick(direction: 'left' | 'right') {
     switch (direction) {
@@ -65,25 +60,16 @@ export default function Carousel({ seriesTitle, format, coversPath, coversAltern
     }
   }
 
-  // useEffect(() => {
-  //   let currentPositionRight = (position + 1) % seriesTitle.length;
-  //   setTimeout(() => {
-  //     setPosition(currentPositionRight);
-  //   }, 5000);
-  //   setNewPosition(position * -50)
-  // }, [position, seriesTitle.length]);
-
-  const cardsHTML = [];
-
   for (let i = 0; i < seriesTitle.length; i++) {
     cardsHTML.push(
       <Card key={i}
-        seriesTitle={seriesTitle[i]}
+        serieTitle={seriesTitle[i]}
         format={format[i]}
-        coverPath={coversPath[i]}
+        coverSource={coversSource[i]}
         coverAlternative={coversAlternative[i]}
         allGenres={allGenres}
-        index={i}
+        path={seriesPath[i]}
+        i={i}
       />
     )
   };
@@ -99,38 +85,34 @@ export default function Carousel({ seriesTitle, format, coversPath, coversAltern
   </>
 }
 
-const CardBackgroundCover = styled.div<CardBackgroundCoverProps>`
-  background-image: url(${props => props.coverPath});
-`
-
-export function Card({ seriesTitle, format, coverPath, coverAlternative, allGenres, index }: CardProps) {
+export function Card({ serieTitle, format, coverSource, coverAlternative, allGenres, path, i }: CardProps) {
+  const allGenresLength = allGenres[i] != undefined ? allGenres[i].length : 1;
   const genresHTML = [];
-  const allGenresLength = allGenres[index] != undefined ? allGenres[index].length : 1;
 
   for (let j = 0; j < allGenresLength; j++) {
     genresHTML.push(
-      <Genres key={j} genres={allGenres[index] != undefined ? allGenres[index][j] : 'No Genre'} />
+      <h5 key={j}>{allGenres[i] != undefined ? allGenres[i][j] : 'No Genre'}</h5>
     )
   };
 
-  return <a href="#" className={styles.card}>
+  return <a href={path ? path : '#'} className={styles.card}>
     <article>
-      <CardBackgroundCover coverPath={coverPath ? `./img/${coverPath}` : './img/no-image-available.png'} className={styles.cardBackgroundCover} />
+      <CardBackgroundCover coverPath={coverSource ? `/img/${coverSource}` : '/img/no-image-available.png'} className={styles.cardBackgroundCover} />
       <div className={styles.cardBackgroundCoverTapestry} />
       <div>
         <Image
           className={styles.cover}
-          src={coverPath ? `./img/${coverPath}` : './img/no-image-available.png'}
-          alt={coverAlternative ? coverAlternative : 'Image'}
+          src={coverSource ? `/img/${coverSource}` : '/img/no-image-available.png'}
+          alt={coverAlternative ? coverAlternative : serieTitle}
           width={112}
           height={112}
           blurDataURL='data:...'
           placeholder='blur'
         />
         <div>
-          <h3>{seriesTitle}</h3>
+          <h3>{serieTitle}</h3>
           <div>
-            <h4>Formato: {format}</h4>
+            <h4>Formato: {format ? format : 'No Format'}</h4>
             <div className={styles.genres}>
               {genresHTML}
             </div>
@@ -139,10 +121,6 @@ export function Card({ seriesTitle, format, coverPath, coverAlternative, allGenr
       </div>
     </article>
   </a>
-}
-
-export function Genres({ genres }: { genres: string }) {
-  return <h5>{genres}</h5>
 }
 
 export function Pointers({ seriesTitleLength, currentPosition }: { seriesTitleLength: number, currentPosition: number }) {
@@ -155,13 +133,9 @@ export function Pointers({ seriesTitleLength, currentPosition }: { seriesTitleLe
   return <ul>{pointerHTML}</ul>
 }
 
-interface RowsProps {
-  onClick: (direction: 'left' | 'right') => void;
-}
-
-export function Rows({ onClick }: RowsProps) {
+export function Rows({ onClick }: { onClick: (direction: 'left' | 'right') => void }) {
   return <div>
-    <button className={styles.button} onClick={() => onClick('left')}><div className={arrow.left} /></button>
-    <button className={styles.button} onClick={() => onClick('right')}><div className={arrow.right} /></button>
+    <button className={styles.button} onClick={() => onClick('left')}><div className={classNames(styles.arrow, styles.left)} /></button>
+    <button className={styles.button} onClick={() => onClick('right')}><div className={classNames(styles.arrow, styles.right)} /></button>
   </div>
 }

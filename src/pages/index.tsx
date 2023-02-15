@@ -3,7 +3,7 @@ import Header from '@/components/Header';
 import Carousel from '@/components/Carousel';
 import LastUpdates from '@/components/LastUpdates';
 
-import { seriesTitle, chaptersTitle, chaptersDate, coversSource, coversAlternative, chaptersPath, format, allGenres } from '@/dataBase'
+import { seriesTitle, chaptersTitle, chaptersDate, coversSource, coversAlternative, chaptersPath, seriesPath, format, allGenres } from '@/dataBase'
 
 import main from '@/styles/main.module.css';
 
@@ -26,9 +26,10 @@ export default function HomePage() {
         <Carousel 
           seriesTitle={seriesTitle}
           format={format}
-          coversPath={coversSource}
+          coversSource={coversSource}
           coversAlternative={coversAlternative}
           allGenres={allGenres}
+          seriesPath={seriesPath}
         />
       </section>
       <section className={main.lastUpdates}>

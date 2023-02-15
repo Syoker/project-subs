@@ -13,33 +13,35 @@ interface LastUpdatesProps {
   chaptersPath: string[];
 }
 
-interface EntryProps {
-  seriesTitle: string;
-  chapterTitle?: string;
-  chapterDate?: string;
-  coverSource?: string;
-  coverAlternative?: string;
-  chapterPath?: string;
+interface CardProps {
+  serieTitle: string;
+  chapterTitle: string;
+  chapterDate: string;
+  coverSource: string;
+  coverAlternative: string;
+  chapterPath: string;
   cardAmount: number;
 }
 
-interface CoverProps {
-  coverPath: string;
-}
+const Cover = styled.div<{ coverPath: string }>`
+  background-image: url(${props => props.coverPath});
+`;
 
-interface CardProps {
-  cardWidth: string;
-}
+const Entry = styled.a<{ entryWidth: number }>`
+  @media (min-width: 80rem) {
+    min-width: ${props => props.entryWidth}%;
+  }
+`;
 
 export default function LastUpdates({ seriesTitle, chaptersTitle, chaptersDate, coversSource, coversAlternative, chaptersPath }: LastUpdatesProps) {
   const cardAmount = seriesTitle.length;
 
-  const entryHTML = [];
+  const cardHTML = [];
 
   for (let i = 0; i < seriesTitle.length; i++) {
-    entryHTML.push(
-      <Entry key={i}
-        seriesTitle={seriesTitle[i]}
+    cardHTML.push(
+      <Card key={i}
+        serieTitle={seriesTitle[i]}
         chapterTitle={chaptersTitle[i]}
         chapterDate={chaptersDate[i]}
         coverSource={coversSource[i]}
@@ -50,20 +52,10 @@ export default function LastUpdates({ seriesTitle, chaptersTitle, chaptersDate, 
     )
   }
 
-  return <div className={styles.container}>{entryHTML}</div>
+  return <div className={styles.container}>{cardHTML}</div>
 }
 
-const Cover = styled.div<CoverProps>`
-  background-image: url(${props => props.coverPath});
-`;
-
-const Card = styled.a<CardProps>`
-  @media (min-width: 80rem) {
-    min-width: ${props => props.cardWidth}%;
-  }
-`;
-
-export function Entry({ seriesTitle, chapterTitle, chapterDate, coverSource, coverAlternative, chapterPath, cardAmount }: EntryProps) {
+export function Card({ serieTitle, chapterTitle, chapterDate, coverSource, coverAlternative, chapterPath, cardAmount }: CardProps) {
   const [difference, setDifference] = useState(0);
   const [unit, setUnit] = useState("segundos");
 
@@ -107,24 +99,24 @@ export function Entry({ seriesTitle, chapterTitle, chapterDate, coverSource, cov
     }
   }, [chapterDate, dateParced]);
 
-  return <Card cardWidth={cardAmount > 1 ? '49.3' : '100'} href={chapterPath ? chapterPath : '#'} className={styles.entry}>
+  return <Entry entryWidth={cardAmount > 1 ? 49.3 : 100} href={chapterPath ? chapterPath : '#'} className={styles.entry}>
     <article>
       <Image
         className={styles.cover}
-        src={coverSource ? `./img/${coverSource}` : './img/no-image-available.png'}
-        alt={coverAlternative ? coverAlternative : seriesTitle}
+        src={coverSource ? `/img/${coverSource}` : '/img/no-image-available.png'}
+        alt={coverAlternative ? coverAlternative : serieTitle}
         width={80}
         height={80}
         blurDataURL='data:...'
         placeholder='blur'
       />
       <div>
-        <Cover coverPath={coverSource ? `./img/${coverSource}` : './img/no-image-available.png'} className={styles.entryBackgroundCover} />
+        <Cover coverPath={coverSource ? `/img/${coverSource}` : '/img/no-image-available.png'} className={styles.entryBackgroundCover} />
         <div className={styles.entryBackgroundCoverTapestry} />
-        <h4>{seriesTitle}</h4>
+        <h4>{serieTitle}</h4>
         <h5>{chapterTitle ? chapterTitle : 'No title'}</h5>
         <h6>{unit != 'undefined' ? unit ? `Hace ${difference} ${unit}` : `${dateParced}` : 'No Date'}</h6>
       </div>
     </article>
-  </Card>
+  </Entry>
 }

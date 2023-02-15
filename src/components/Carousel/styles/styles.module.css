@@ -190,6 +190,70 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+.arrow {
+    background: transparent;
+    
+    margin-top: 0.9rem;
+
+    border-radius: 10px;
+    height: 4px;
+
+    transition: all 0.3s;
+}
+
+.arrow:after, .arrow:before {
+    content: "";
+
+    background-color: #FFFFFF;
+
+    border-radius: 10px;
+    position: absolute;
+    height: 4px;
+    width: 15px;
+
+    transition: all .3s;
+}
+
+.arrow:after {
+    top: 4px;
+}
+
+.arrow:before {
+    top: -4px;
+}
+
+.left{
+    width: 25px;
+}
+
+.left:after, .left:before {
+    right: 5;
+}
+
+.left:after {
+    transform: rotate(45deg);
+}
+
+.left:before {
+    transform: rotate(-45deg);
+}
+
+.right {
+    width: 22.5px;
+}
+
+.right:after, .right:before {
+    left: 0;
+}
+
+.right:after {
+    transform: rotate(-45deg);
+}
+
+.right:before {
+    transform: rotate(45deg);
+}
+
 @media (prefers-color-scheme: dark) {
     .genres h5 {
         background-color: #FF9148;
@@ -202,6 +266,10 @@
 
     .pointersRows div .button {
         background-color: #FF9148;
+    }
+
+    .arrow:after, .arrow:before {
+        background-color: #2C2C2C;
     }
 }
 
