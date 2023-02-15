@@ -115,12 +115,12 @@ export function Card({ seriesTitle, format, coverPath, coverAlternative, allGenr
 
   return <a href="#" className={styles.card}>
     <article>
-      <CardBackgroundCover coverPath={coverPath ? `/img/${coverPath}` : '/img/no-image-available.png'} className={styles.cardBackgroundCover} />
+      <CardBackgroundCover coverPath={coverPath ? `./img/${coverPath}` : './img/no-image-available.png'} className={styles.cardBackgroundCover} />
       <div className={styles.cardBackgroundCoverTapestry} />
       <div>
         <Image
           className={styles.cover}
-          src={coverPath ? `/img/${coverPath}` : '/img/no-image-available.png'}
+          src={coverPath ? `./img/${coverPath}` : './img/no-image-available.png'}
           alt={coverAlternative ? coverAlternative : 'Image'}
           width={112}
           height={112}

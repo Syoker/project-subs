@@ -111,7 +111,7 @@ export function Entry({ seriesTitle, chapterTitle, chapterDate, coverSource, cov
     <article>
       <Image
         className={styles.cover}
-        src={coverSource ? `/img/${coverSource}` : '/img/no-image-available.png'}
+        src={coverSource ? `./img/${coverSource}` : './img/no-image-available.png'}
         alt={coverAlternative ? coverAlternative : seriesTitle}
         width={80}
         height={80}
@@ -119,7 +119,7 @@ export function Entry({ seriesTitle, chapterTitle, chapterDate, coverSource, cov
         placeholder='blur'
       />
       <div>
-        <Cover coverPath={coverSource ? `/img/${coverSource}` : '/img/no-image-available.png'} className={styles.entryBackgroundCover} />
+        <Cover coverPath={coverSource ? `./img/${coverSource}` : './img/no-image-available.png'} className={styles.entryBackgroundCover} />
         <div className={styles.entryBackgroundCoverTapestry} />
         <h4>{seriesTitle}</h4>
         <h5>{chapterTitle ? chapterTitle : 'No title'}</h5>
