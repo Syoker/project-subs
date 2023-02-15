@@ -1,0 +1,44 @@
+.container {
+    padding-bottom: 0.5rem;
+}
+
+.container section h2 {
+    font-family: ColateraSoft;
+    font-weight: 400;
+
+    color: #000000;
+
+    transition: color 0.3s;
+}
+
+.lastEntrys {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+
+    position: relative;
+
+    padding: 1rem 1.5rem 0.5rem 1.5rem;
+
+    gap: 0.5rem;
+}
+
+.lastUpdates {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+
+    gap: 0.5rem;
+
+    position: relative;
+
+    padding: 0.5rem 1.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    .container section h2 {   
+        color: #FFFFFF;
+    }
+}

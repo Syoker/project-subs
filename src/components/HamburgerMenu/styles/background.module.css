@@ -1,0 +1,17 @@
+.closedMenu {
+    position: fixed;
+    top: 4rem;
+    right: 0rem;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    opacity: 0.25;
+
+    z-index: 3;
+
+    display: none;
+}
+
+.openMenu {
+    display: block;
+}

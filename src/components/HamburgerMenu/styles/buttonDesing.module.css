@@ -1,0 +1,65 @@
+.closedMenu {
+    background: #000000;
+
+    margin: 2rem 1.5rem;
+
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25px;
+    height: 4px;
+    
+    transition: all 0.3s;
+}
+
+.closedMenu:before, .closedMenu:after {
+    content: "";
+
+    background-color: #000000;
+
+    border-radius: 10px;
+    position: absolute;
+    height: 4px;
+    right: 5;
+    
+    transition: all .3s;
+}
+
+.closedMenu:before {
+    top: -10px;
+    width: 30px;
+}
+
+.closedMenu:after {
+    top: 10px;
+    width: 30px;
+}
+
+.openMenu {
+    background: transparent;
+}
+
+.openMenu:before {
+    top: 0rem;
+    transform: rotate(45deg);
+}
+
+.openMenu:after {
+    top: 0rem;
+    transform: rotate(-45deg);
+}
+
+@media (prefers-color-scheme: dark) {
+    .closedMenu {
+        background: #FFFFFF;
+    }
+
+    .closedMenu:before, .closedMenu:after {
+        background-color: #FFFFFF;
+    }
+    
+    .openMenu {
+        background: transparent;
+    }
+}

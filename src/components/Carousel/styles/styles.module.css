@@ -1,0 +1,212 @@
+.container {
+    position: relative;
+
+    width: 100%;
+
+    display: flex;
+    gap: 2rem;
+
+    overflow: hidden;
+
+    transition: all 1s;
+}
+
+.container .cardContainerStyle {
+    width: 200%;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+
+    transition: all 0.3s;
+}
+
+.card {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.card article {
+    display: flex;
+
+    padding: 1rem;
+    border-radius: 8px;
+    gap: 1rem;
+
+    position: relative;
+
+    height: 12rem;
+    width: calc(100vw - 3rem);
+
+    align-items: center;
+
+    transition: all 0.3s;
+
+    overflow: hidden;
+}
+
+.card article .cardBackgroundCover,
+.card article .cardBackgroundCoverTapestry {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    left: 0;
+}
+
+.card article .cardBackgroundCover {
+    background-position: top;
+    background-size: cover;
+
+    filter: brightness(0.5) blur(3rem);
+
+    z-index: 2;
+}
+
+.card article .cardBackgroundCoverTapestry {
+    background-color: #191919;
+
+    z-index: 1;
+}
+
+.card article div {
+    display: flex;
+    gap: 1rem;
+
+    width: 100%;
+
+    position: relative;
+    z-index: 2;
+}
+
+.card article div .cover {
+    height: auto;
+    min-width: auto;
+
+    border-radius: 8px;
+}
+
+.card article div div {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    gap: 0.5rem;
+}
+
+.card article div div h3,
+.card article div div div h4 {
+    font-family: ColateraSoft;
+    font-weight: 400;
+
+    color: #FFFFFF;
+
+    transition: color 0.3s;
+}
+
+.card article div div div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.genres {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.5rem !important;
+    justify-content: left !important;
+}
+
+.genres h5 {
+    font-family: ColateraSoft;
+    font-weight: 400;
+
+    background-color: #C42A00;
+    color: #FFFFFF;
+    border-radius: 0.4rem;
+    padding: 0.1rem 0.3rem;
+
+    transition: all 0.3s;
+}
+
+.pointersRows {
+    position: relative;
+}
+
+.pointersRows ul {
+    width: 100%;
+    padding: 0rem;
+
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.pointersRows ul li {
+    width: 0.5rem;
+    height: 0.5rem;
+    margin: 0.75rem 0.25rem;
+
+    border-radius: 10rem;
+    background-color: #C42A00;
+
+    filter: brightness(50%);
+
+    list-style: none;
+
+    transition: all 0.3s;
+}
+
+.pointersRows ul .active {
+    filter: brightness(100%);
+}
+
+.pointersRows div {
+    display: flex;
+
+    gap: 0.5rem;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.pointersRows div .button {
+    position: relative;
+
+    background-color: #C42A00;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 5rem;
+    color: #FFFFFF;
+
+    cursor: pointer;
+
+    transition: all 0.3s;
+
+    border: 0px;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-color-scheme: dark) {
+    .genres h5 {
+        background-color: #FF9148;
+        color: #2C2C2C;
+    }
+
+    .pointersRows ul li {
+        background-color: #FF9148;
+    }
+
+    .pointersRows div .button {
+        background-color: #FF9148;
+    }
+}
+
+@media (min-width: 80rem) {
+    .card article {
+        width: calc(80rem - 3rem);
+    }
+}
